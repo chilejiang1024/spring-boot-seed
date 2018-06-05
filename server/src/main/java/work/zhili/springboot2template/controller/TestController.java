@@ -10,10 +10,8 @@ import work.zhili.springboot2template.service.impl.TestServiceImpl;
 /**
  * Title : work.zhili.springboot2template.controller <br>
  * Description :
- *  <p>
- *  <ul> 
- *      <li>
- *  </ul>
+ *   api test controller
+ *
  * @author chile
  * @version 1.0
  * @date 2018/3/21 18:10
