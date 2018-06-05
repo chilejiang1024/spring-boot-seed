@@ -1,0 +1,33 @@
+server:
+    port: 22222
+
+spring:
+    profiles: default
+    datasource:
+        url: jdbc:mysql://zhili.work:3306/test?useUnicode=true&characterEncoding=utf8&allowMultiQueries=yes&autoReconnect=true&autoReconnectForPools=true&useSSL=false
+        username: root
+        password: zhili.work
+        driver-class-name: com.mysql.jdbc.Driver
+        acquireIncrement: 5
+        initialPoolSize: 5
+        minPoolSize: 5
+        maxPoolSize: 20
+        maxWait: 60000
+        maxPoolPreparedStatementPerConnectionSize: 100
+        timeBetweenEvictionRunsMillis: 3000
+        minEvictableIdleTimeMillis: 300000
+    thymeleaf:
+        cache: false
+        prefix: classpath:/templates/
+        suffix: .html
+        encoding: UTF-8
+        mode: LEGACYHTML5
+    redis:
+        host: zhili.work
+        password: zhili
+        database: 1
+
+logging:
+    file: ./logs/server.log
+    level:
+        root: info

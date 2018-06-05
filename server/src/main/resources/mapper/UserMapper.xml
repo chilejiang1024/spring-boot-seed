@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="work.zhili.springboot2template.dao.IUserMapper">
+    <resultMap id="BaseResultMap" type="work.zhili.springboot2template.model.User">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="nick_name" jdbcType="VARCHAR" property="nickname" />
+        <result column="gender" jdbcType="TINYINT" property="gender" />
+        <result column="date_created" jdbcType="DATE" property="dateCreated" />
+        <result column="date_updated" jdbcType="DATE" property="dateUpdated" />
+        <result column="vaild" jdbcType="TINYINT" property="vaild" />
+    </resultMap>
+
+    <sql id="BaseColumnList">
+        id, username, password, nick_name, gender, date_created, date_updated, vaild
+    </sql>
+
+    <select id="queryAllForTesting" resultMap="BaseResultMap">
+        select
+            <include refid="BaseColumnList" />
+        from
+            test.user
+    </select>
+
+    <insert id="insert" parameterType="work.zhili.springboot2template.model.User">
+        insert into
+            test.user
+        values
+            ( #{id}, #{username}, #{password}, #{nickname}, #{gender}, now(), now(), 1 )
+    </insert>
+
+    <delete id="delete">
+        delete from
+            test.user
+        where
+            id = #{userId}
+    </delete>
+
+    <update id="invalid">
+        update
+            test.user
+        set
+            vaild = 0
+        where
+            id = #{id}
+    </update>
+
+    <update id="update">
+        update
+            test.user
+        set
+            <if test="username != null"/>
+            username = #{username},
+            <if test="password != null"/>
+            password = #{password},
+            <if test="nickname != null"/>
+            nick_name = #{nickname},
+            <if test="gender != null"/>
+            gender = #{gender},
+            date_updated = now()
+        where
+            id = #{id}
+    </update>
+
+    <select id="select" resultMap="BaseResultMap">
+        select
+            <include refid="BaseColumnList" />
+        from
+            test.user
+        where
+            id = #{userId}
+    </select>
+</mapper>
