@@ -22,7 +22,11 @@ public class Application {
     private static Logger LOG = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
+        long a = System.currentTimeMillis();
+
         SpringApplication.run(Application.class, args);
-        LOG.info("application was started ...");
+
+        long b = System.currentTimeMillis();
+        LOG.info("application was started in {} ms ...", b - a);
     }
 }
