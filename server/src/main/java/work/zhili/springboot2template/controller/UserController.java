@@ -32,7 +32,7 @@ public class UserController {
      * @return {user, user, ...}
      */
     @GetMapping
-    public Object queryAll() {
+    Object queryAll() {
         return userService.queryAllForTesting();
     }
 
@@ -43,7 +43,7 @@ public class UserController {
      * @return ok
      */
     @PostMapping
-    public Object add(@RequestParam String username, @RequestParam String password) {
+    Object add(@RequestParam String username, @RequestParam String password) {
         User user = new User();
         user.setId(UUIDUtils.getUuid());
         user.setUsername(username);
@@ -58,7 +58,7 @@ public class UserController {
      * @return ok
      */
     @DeleteMapping
-    public Object delete(String userId) {
+    Object delete(String userId) {
         userService.invalid(userId);
         return Response.SUCCESSFUL_MESSAGE;
     }
@@ -69,7 +69,7 @@ public class UserController {
      * @return ok
      */
     @PatchMapping
-    public Object update(@RequestBody User user) {
+    Object update(@RequestBody User user) {
         userService.update(user);
         return Response.SUCCESSFUL_MESSAGE;
     }
@@ -80,7 +80,7 @@ public class UserController {
      * @return the user
      */
     @GetMapping("/{userId}")
-    public ResponseEntity<User> select(@PathVariable String userId) {
+    ResponseEntity<User> select(@PathVariable String userId) {
         User user = userService.select(userId);
         return ResponseEntity.ok(user);
     }

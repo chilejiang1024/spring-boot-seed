@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUploadController {
 
     @PostMapping
-    public Object uploadFile(MultipartFile file) {
+    Object uploadFile(MultipartFile file) {
 
         System.out.println(file.getOriginalFilename());
 

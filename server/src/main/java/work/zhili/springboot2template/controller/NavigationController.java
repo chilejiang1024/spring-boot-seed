@@ -21,23 +21,23 @@ import javax.servlet.http.HttpServletRequest;
 public class NavigationController {
 
     @GetMapping("/")
-    public String root() {
+    String root() {
         return "index";
     }
 
     @GetMapping("/user/register")
-    public String user() {
+    String user() {
         return "/user/register";
     }
 
     @GetMapping("/test/1")
-    public String test1(HttpServletRequest request, RedirectAttributes attributes) {
+    String test1(HttpServletRequest request, RedirectAttributes attributes) {
         attributes.addAttribute("2", "2");
         return "redirect:/test/{2}";
     }
 
     @GetMapping("/test/2")
-    public String test2() {
+    String test2() {
         return "/test/2";
     }
 
